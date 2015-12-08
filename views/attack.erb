@@ -1,4 +1,9 @@
 <div style='text-align: center; font-family: Helvetica'>
+<% if !@game.loser %>
 <%= @game.attacker_name %> attacked <%= @game.defender_name %><br>
 <a href ='/play'>Play</a>
+<% else %>
+<h2><%= @game.defender_name %>, you lose!<br></h2>
+<a href ='/'>Play another game</a>
+<% end %>
 </div>

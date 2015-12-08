@@ -1,7 +1,7 @@
 class Player
   attr_reader :name, :hp
 
-  STARTING_HP = 100
+  STARTING_HP = 60
 
   def initialize(name)
     self.name = name
@@ -9,7 +9,11 @@ class Player
   end
 
   def receive_damage
-    self.hp -= 2
+    self.hp -= 10
+  end
+
+  def no_hp?
+    hp <= 0
   end
 
   private

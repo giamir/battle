@@ -8,7 +8,7 @@ class Game
   def_delegator :attacker, :hp, :attacker_hp
   def_delegator :defender, :hp, :defender_hp
 
-  attr_reader :players, :attacker
+  attr_reader :players, :loser
 
   def initialize(attacker, defender)
     @players = [attacker, defender]
@@ -28,5 +28,12 @@ class Game
 
   def attack(player)
     player.receive_damage
+    end_of_game(player)
+  end
+
+  private
+
+  def end_of_game(player)
+    @loser = player if player.no_hp?
   end
 end

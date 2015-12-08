@@ -3,7 +3,6 @@ require_relative './lib/player'
 require_relative './lib/game'
 
 class Battle < Sinatra::Base
-
   get '/' do
     erb :index
   end

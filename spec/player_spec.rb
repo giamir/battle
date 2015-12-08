@@ -1,17 +1,24 @@
 require 'player'
 
 describe Player do
-  let(:player1) { described_class.new 'Jon' }
+  let(:player) { described_class.new 'Jon' }
   it 'returns it/s name' do
-    expect(player1.name).to eq 'Jon'
+    expect(player.name).to eq 'Jon'
   end
   it 'it has a starting HP' do
-    expect(player1.hp).to eq described_class::STARTING_HP
+    expect(player.hp).to eq described_class::STARTING_HP
   end
 
   describe '#receive_damage' do
     it 'deducts HP' do
-      expect { player1.receive_damage }.to change { player1.hp }.by(-2)
+      expect { player.receive_damage }.to change { player.hp }.by(-10)
+    end
+  end
+
+  describe '#no_hp?' do
+    it 'is set to true if the player do not have any HP' do
+      6.times { player.receive_damage }
+      expect(player.no_hp?).to be true
     end
   end
 end
