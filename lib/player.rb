@@ -8,10 +8,6 @@ class Player
     self.hp = STARTING_HP
   end
 
-  def attack(player)
-    player.receive_damage
-  end
-
   def receive_damage
     self.hp -= 2
   end
