@@ -3,23 +3,27 @@ require 'forwardable'
 class Game
   extend Forwardable
 
-  def_delegator :player1, :name, :player1_name
-  def_delegator :player2, :name, :player2_name
-  def_delegator :player1, :hp, :player1_hp
-  def_delegator :player2, :hp, :player2_hp
+  def_delegator :attacker, :name, :attacker_name
+  def_delegator :defender, :name, :defender_name
+  def_delegator :attacker, :hp, :attacker_hp
+  def_delegator :defender, :hp, :defender_hp
 
-  attr_reader :players
+  attr_reader :players, :attacker
 
-  def initialize(player1, player2)
-    @players = [player1, player2]
+  def initialize(attacker, defender)
+    @players = [attacker, defender]
   end
 
-  def player1
+  def attacker
     players.first
   end
 
-  def player2
+  def defender
     players.last
+  end
+
+  def switch
+    @players.reverse!
   end
 
   def attack(player)

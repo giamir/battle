@@ -2,21 +2,27 @@ require 'game'
 
 describe Game do
 
-  let(:player1) {double :player1}
-  let(:player2) {double :player2}
-  let(:game) { described_class.new(player1, player2) }
+  let(:attacker) {double :attacker}
+  let(:defender) {double :defender}
+  let(:game) { described_class.new(attacker, defender) }
 
   it 'retrieves the first player' do
-    expect(game.player1).to eq player1
+    expect(game.attacker).to eq attacker
   end
   it 'retrieves the second player' do
-    expect(game.player2).to eq player2
+    expect(game.defender).to eq defender
   end
 
   describe '#attack' do
     it 'receive receive_damage' do
-      expect(player2).to receive(:receive_damage)
-      game.attack(game.player2)
+      expect(defender).to receive(:receive_damage)
+      game.attack(game.defender)
+    end
+  end
+  describe '#switch' do
+    it ' should reverse the order of players array' do
+      game.switch
+      expect(game.players).to eq [defender, attacker]
     end
   end
 end

@@ -1,5 +1,12 @@
-<%= @game.player1_name %> vs. <%= @game.player2_name %><br>
-<%= @game.player2_name %>: <%= @game.player2_hp %>HP<br>
+<div style='text-align: center; font-family: Helvetica'>
+<h1><%= @game.attacker_name %> vs. <%= @game.defender_name %></h1>
+<h2><%= @game.attacker_name %>'s turn</h2>
+<p><%= @game.attacker_name %>: <%= @game.attacker_hp %>HP</p>
+<p><%= @game.defender_name %>: <%= @game.defender_hp %>HP</p>
 <form action="/attack">
   <input type="submit" value="ATTACK">
 </form>
+<form action="/switch">
+  <input type="submit" value="SWITCH">
+</form>
+</div>
