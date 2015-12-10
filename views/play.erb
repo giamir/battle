@@ -1,12 +1,30 @@
-<div style='text-align: center; font-family: Helvetica'>
-<h1><%= @game.attacker_name %> vs. <%= @game.defender_name %></h1>
-<h2><%= @game.attacker_name %>'s turn</h2>
-<p><%= @game.attacker_name %>: <%= @game.attacker_hp %>HP</p>
-<p><%= @game.defender_name %>: <%= @game.defender_hp %>HP</p>
-<form action="/attack">
-  <input type="submit" value="ATTACK">
-</form>
-<form action="/switch">
-  <input type="submit" value="SWITCH">
-</form>
+<div class='block_background' id='attacker'>
+  <h1>Attacker</h1>
+  <h2><%= @game.attacker_name %></h2>
+  <p><%= @game.attacker_hp %>HP</p>
+  <form method="post" action="/attack">
+    <input type="hidden" name="_method" value="put">
+    <input type="submit" value="ATTACK">
+  </form>
+</div>
+
+<div class='block_background' id='defender'>
+  <h1>Defender</h1>
+  <h2><%= @game.defender_name %></h2>
+  <p><%= @game.defender_hp %>HP</p>
+  <form action="/switch" method="post">
+    <input type="hidden" name="_method" value="put">
+    <input type="submit" value="SWITCH">
+  </form>
+</div>
+
+<div id='info'>
+  <div class='vs'>
+    VS
+  </div>
+  <% if @game.deducted_point %>
+  <div id='message' class='block_background'>
+    <b><%= @game.attacker_name %></b> inflicted <b><%= @game.deducted_point %>HP</b> damage to <b><%= @game.defender_name %></b>
+  </div>
+  <% end %>
 </div>

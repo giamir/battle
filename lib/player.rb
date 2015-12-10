@@ -9,7 +9,7 @@ class Player
   end
 
   def receive_damage
-    self.hp -= 10
+    deduct_random_amount
   end
 
   def no_hp?
@@ -18,5 +18,10 @@ class Player
 
   private
 
+  def deduct_random_amount
+    random_amount = (Kernel.rand(3) + 1) * 5
+    self.hp -= random_amount
+    random_amount
+  end
   attr_writer :name, :hp
 end

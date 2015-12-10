@@ -8,7 +8,7 @@ class Game
   def_delegator :attacker, :hp, :attacker_hp
   def_delegator :defender, :hp, :defender_hp
 
-  attr_reader :players, :loser
+  attr_reader :players, :loser, :deducted_point
 
   def initialize(attacker, defender)
     @players = [attacker, defender]
@@ -23,11 +23,12 @@ class Game
   end
 
   def switch
+    @deducted_point = nil
     @players.reverse!
   end
 
   def attack(player)
-    player.receive_damage
+    @deducted_point = player.receive_damage
     end_of_game(player)
   end
 

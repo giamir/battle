@@ -11,13 +11,13 @@ describe Player do
 
   describe '#receive_damage' do
     it 'deducts HP' do
-      expect { player.receive_damage }.to change { player.hp }.by(-10)
+      expect { player.receive_damage }.to change { player.hp }.by( a_value >= (-20) && a_value <= (-5) )
     end
   end
 
   describe '#no_hp?' do
     it 'is set to true if the player do not have any HP' do
-      6.times { player.receive_damage }
+      12.times { player.receive_damage }
       expect(player.no_hp?).to be true
     end
   end

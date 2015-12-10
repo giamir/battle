@@ -1,6 +1,10 @@
 feature 'Enter names' do
   scenario 'submitting names' do
     sign_in_and_play
-    expect(page).to have_content 'Jon vs. Giamir'
+    expect(page).to have_content 'Jon'
+  end
+  scenario 'submitting names' do
+    sign_in_and_play
+    expect(page).to have_content 'Giamir'
   end
 end
