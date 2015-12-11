@@ -9,6 +9,7 @@ require 'capybara/rspec'
 require 'rspec'
 require 'web_helpers'
 require 'simplecov'
+require 'pry-byebug'
 SimpleCov.start
 
 Capybara.app = Battle

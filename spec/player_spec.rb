@@ -12,19 +12,24 @@ describe Player do
     expect(player.hp).to eq described_class::STARTING_HP
   end
 
-  describe '#receive_damage' do
-    it 'deducts HP' do
-      allow(Kernel).to receive(:rand).and_return(0)
-      expect { player.receive_damage }.to change { player.hp }.by(-5)
+  describe '#critical_damage?' do
+    it 'is set to true if the player have less than a % HP' do
+      amount = described_class::CRITICAL_PERC * described_class::STARTING_HP / 100
+      player.receive_damage(described_class::STARTING_HP + 1 - amount)
+      expect(player.critical_damage?).to be true
     end
   end
 
-  describe '#no_hp?' do
+  describe '#receive_damage' do
+    it 'deducts HP' do
+      expect { player.receive_damage(10) }.to change { player.hp }.by(-10)
+    end
+  end
+
+  describe '#dead?' do
     it 'is set to true if the player do not have any HP' do
-      deduct = (described_class::STARTING_HP / 5) - 1
-      allow(Kernel).to receive(:rand).and_return(deduct)
-      player.receive_damage
-      expect(player.no_hp?).to be true
+      player.receive_damage(described_class::STARTING_HP)
+      expect(player.dead?).to be true
     end
   end
 end

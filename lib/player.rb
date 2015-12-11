@@ -4,6 +4,7 @@ class Player
   attr_reader :name, :hp, :email
 
   STARTING_HP = 60
+  CRITICAL_PERC = 30
 
   def initialize(name, email)
     self.name = name
@@ -11,23 +12,20 @@ class Player
     self.hp = STARTING_HP
   end
 
-  def hp_percentage
-    hp * 100 / STARTING_HP
-  end
-
   def critical_damage?
-    hp_percentage < 30
+    hp_percentage < CRITICAL_PERC
   end
 
-  def receive_damage
-    deduct_random_amount
+  def receive_damage(amount)
+    self.hp -= amount
+    amount
   end
 
   def img_link
     'http://www.gravatar.com/avatar/' << calculate_md5.to_s
   end
 
-  def no_hp?
+  def dead?
     hp <= 0
   end
 
@@ -35,10 +33,8 @@ class Player
 
   attr_writer :name, :hp, :email
 
-  def deduct_random_amount
-    random_amount = (Kernel.rand(3) + 1) * 5
-    self.hp -= random_amount
-    random_amount
+  def hp_percentage
+    hp * 100 / STARTING_HP
   end
 
   def calculate_md5

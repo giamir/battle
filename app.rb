@@ -1,8 +1,10 @@
 require 'sinatra/base'
 require_relative './lib/player'
 require_relative './lib/game'
+require_relative './lib/attack'
 
 class Battle < Sinatra::Base
+
   use Rack::MethodOverride
   def self.game=(game)
     @game = game
@@ -23,27 +25,22 @@ class Battle < Sinatra::Base
   end
 
   get '/play' do
-    @game = self.class.game
+    game
     erb :play
   end
 
   post '/attack' do
-    @game = self.class.game
-    @game.attack(@game.defender)
-    redirect '/game_over' if @game.loser
+    game.message = Attack.run(game.defender, 'basic')
+    redirect '/game_over' if game.defender_dead?
+    game.switch
     redirect '/play'
   end
 
   get '/game_over' do
-    @game = self.class.game
+    game
     erb :game_over
   end
 
-  # put '/switch' do
-  #   @game = self.class.game
-  #   @game.switch
-  #   redirect '/play'
-  # end
   helpers do
     def game
       @game ||= self.class.game
