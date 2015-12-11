@@ -1,7 +1,11 @@
-<div id='game_over' class='block_background'>
-<h2><%= @game.attacker_name %>, you are the best!</h2>
-<h2><%= @game.defender_name %>, you are a loser!</h2>
-<form action="/">
-  <input type="submit" value="PLAY AGAIN">
-</form>
+<div class="container-fluid inner">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4 overlayer block">
+      <img src="<%= @game.attacker.img_link %>" class="img-circle" alt="Winner Gravatar" width="150" height="150">
+      <h2><%= @game.attacker_name %> win</h2>
+      <form action="/">
+        <input class="btn btn-default" type="submit" value="PLAY AGAIN">
+      </form>
+    </div>
+  </div>
 </div>

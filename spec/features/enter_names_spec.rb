@@ -1,9 +1,9 @@
-feature 'Enter names' do
-  scenario 'submitting names' do
+feature 'Enter names and email' do
+  scenario 'submitting name' do
     sign_in_and_play
     expect(page).to have_content 'Jon'
   end
-  scenario 'submitting names' do
+  scenario 'submitting opponent name' do
     sign_in_and_play
     expect(page).to have_content 'Giamir'
   end

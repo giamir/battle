@@ -1,11 +1,11 @@
 feature 'Hit points' do
   scenario 'seeing hit points' do
     sign_in_and_play
-    expect(page).to have_css('div#attacker', text: "#{Player::STARTING_HP}HP")
+    expect(find('#progress-bar-1')['style']).to eq 'width:100%'
   end
 
-  scenario 'see opponents hit points' do
+  scenario 'seeing opponent hit points' do
     sign_in_and_play
-    expect(page).to have_css('div#defender', text: "#{Player::STARTING_HP}HP")
+    expect(find('#progress-bar-2')['style']).to eq 'width:100%'
   end
 end

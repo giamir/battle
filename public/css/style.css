@@ -8,10 +8,35 @@ body{
   font-family: Helvetica, Arial;
 }
 
-a{
-  display: inline-block;
-  margin: 20px 0 0 0;
-  color: #000;
+.outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.overlayer{
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.block{
+  padding: 20px 30px;
 }
 
 h1{
@@ -20,16 +45,21 @@ h1{
 }
 
 h2{
+  font-size: 25px;
+  font-weight: bold;
   text-transform: uppercase;
+  margin-bottom: 30px;
 }
 
 p{
-  font-size: 20px;
-  font-weight: bold;
+}
+
+#navigation form{
+  display: inline-block;
 }
 
 input{
-  margin: 20px auto;
+  margin: 5px 0 30px 0;
   display:block;
 }
 
@@ -39,71 +69,42 @@ input[type=submit]{
   text-transform: uppercase;
   border: none;
   padding: 10px;
-  margin-top: 30px;
+  margin: 10px;
 }
 
-.block_background{
-  background: rgba(255, 255, 255, 0.7);
-}
-
-#container{
-  position: absolute;
-  margin: auto;
-  padding: 50px;
-  height: 300px;
-  width: 300px;
-  top:0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-#game_over{
-  position: absolute;
-  margin: auto;
-  padding: 50px;
-  height: 200px;
-  width: 500px;
-  top:0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-#attacker{
-  position: absolute;
-  padding: 25px;
-  height: 250px;
-  width: 250px;
-  top:100px;
-  left: 100px;
-}
-
-#defender{
-  position: absolute;
-  padding: 25px;
-  height: 250px;
-  width: 250px;
-  bottom: 100px;
-  right: 100px;
-}
-
-#info{
-  position: absolute;
-  margin: auto;
-  height: 100px;
-  width: 300px;
-  position: absolute;
-  top:0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+input[type=submit].start_button{
+  background: rgba(255, 255, 255, 0.8);
+  color: black;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 20px 20px 15px 20px;
+  margin: 10px auto;
 }
 
 .vs{
   font-size: 100px;
 }
 
-#message{
-  padding: 25px;
+.attacker{
+  font-weight: bold;
+  font-size: 15px;
+  display: inline-block;
+  text-transform: uppercase;
+  margin-right: 20px;
+}
+
+.top{
+  position: absolute;
+  padding: 15px 0 5px 0;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.bottom{
+  position: absolute;
+  padding: 5px 0 5px 0;
+  width: 100%;
+  bottom: 0;
+  left: 0;
 }

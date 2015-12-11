@@ -30,7 +30,7 @@ describe Game do
   describe '#switch' do
     it ' should reverse the order of players array' do
       game.switch
-      expect(game.players).to eq [defender, attacker]
+      expect(game.attacker).to eq defender
     end
   end
 end

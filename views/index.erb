@@ -1,14 +1,28 @@
-<div class='block_background' id='container'>
-  <h1>Battle</h1>
-  <form action="/names" method="post">
-    <label for="player_1_name">
-      Player 1
-      <input type="text" name="player_1_name">
-    </label>
-    <label for="player_1_name">
-      Player 2
-      <input type="text" name="player_2_name">
-    </label>
-    <input type="submit" value="Submit">
-  </form>
-</div>
+<form action="/names" method="post">
+  <div class="container-fluid inner">
+    <div class="row">
+      <div class="col-md-4 vcenter">
+        <div class="form-group col-md-8 col-md-offset-2 overlayer block">
+          <h2>Player 1</h2>
+          <label for="player_1_name">Name</label>
+          <input type="text" class="form-control" name="player_1_name" id="player_1_name" placeholder="Name">
+          <label for="player_1_email">Email</label>
+          <input type="email" class="form-control" name="player_1_email" id="player_1_email" placeholder="Email">
+        </div>
+      </div><!--
+   --><div class="col-md-4 vcenter">
+        <input class='start_button' type="submit" value="Start a new game">
+      </div><!--
+   --><div class="col-md-4 vcenter">
+        <div class="form-group col-md-8 col-md-offset-2 overlayer block">
+          <h2>Player 2</h2>
+          <label for="player_2_name">Name</label>
+          <input type="text" class="form-control" name="player_2_name" id="player_2_name" placeholder="Name">
+          <label for="player_2_email">Email</label>
+          <input type="email" class="form-control" name="player_2_email" id="player_2_email" placeholder="Email">
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</form>
