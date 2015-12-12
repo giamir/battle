@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require_relative './lib/player'
+require_relative './lib/computer_player'
 require_relative './lib/game'
 require_relative './lib/attack'
 
@@ -19,7 +20,11 @@ class Battle < Sinatra::Base
 
   post '/names' do
     player1 = Player.new(params[:player_1_name], params[:player_1_email])
-    player2 = Player.new(params[:player_2_name], params[:player_2_email])
+    if params[:vs_computer?]
+      player2 = ComputerPlayer.new
+    else
+      player2 = Player.new(params[:player_2_name], params[:player_2_email])
+    end
     self.class.game = Game.new(player1, player2)
     redirect '/play'
   end
@@ -31,8 +36,8 @@ class Battle < Sinatra::Base
 
   post '/attack' do
     game.message = Attack.run(game.defender, 'basic')
-    redirect '/game_over' if game.defender_dead?
     game.switch
+    redirect '/game_over' if game.winner
     redirect '/play'
   end
 

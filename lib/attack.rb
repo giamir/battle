@@ -1,6 +1,7 @@
 class Attack
   ATTACKS = [
-    'basic'
+    'basic',
+    'random_attack'
   ]
 
   def initialize(player)
@@ -13,8 +14,14 @@ class Attack
   end
 
   def basic
-    player.receive_damage(random_damage_amount)
-    "#{player.name} received #{random_damage_amount}HP damage"
+    amount = random_damage_amount
+    player.receive_damage(amount)
+    "#{player.name} received #{amount}HP damage"
+  end
+
+  def random_attack
+    chosen = ATTACKS.select { |attack| attack != 'random_attack' }.sample
+    send(chosen.to_sym)
   end
 
   private
